@@ -5,12 +5,12 @@ import cors from "cors";
 
 
 const app = express();
+const PORT = 5000; //the port 5000 will work for database
 
 app.use(bodyParser.json({ limit: "30mb", extended: true }))  //setting the limit for body of html by encoding like images should not be greater then 30mb 
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true })) //for encoding the url  
 app.use(cors()); //timestamp function that tells from where the request has send or come
 const CONNECTION_URL = "mongodb+srv://socialnetwork:<password>@cluster0.czsk3.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"  // connection of the mongodb database
-const PORT = 5000; //the port 5000 will work for database
 // And we have use nodemon for refreshment of the page automatically so nodemon will execute 
 //it automatically by updating the app and error and if error will occure it will show in terminal
 mongoose.connect(CONNECTION_URL).then(() => {  //connecting to mongodatabase
