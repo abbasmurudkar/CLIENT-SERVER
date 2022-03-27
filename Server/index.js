@@ -12,14 +12,14 @@ const customMiddleware = (req, res,next)=>{
     console.log("Middle ware executed!!!")
     next() 
 }
-app.use(customMiddleware)
+// app.use(customMiddleware)
 //USING GET METHOD INSTEAD OF POST
-app.get("/",(req,res)=>{
+app.get("/home",(req,res)=>{
     console.log("hellow from localhost")
     res.send("HELLO I AM RESPONSE FROM SERVER") //it will show on browser
 })
-app.get("/home",(req,res)=>{
-    console.log("hello from home page")
+app.get("/login",customMiddleware,(req,res)=>{
+    console.log("hello from login page")
     res.send("HELLO I AM RESPONSE FROM SERVER") //it will show on browser
 })
 app.listen(PORT,()=>{ //which port number should response go and what task should it perform after listening on the port
