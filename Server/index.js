@@ -6,10 +6,20 @@ import cors from "cors";
 
 const app = express(); //THE WHOLE SERVER
 const PORT = 5000; //the port 5000 will work for database
-
-// MIDDLEWARE
+// MIDDLEWARE CORS BODY PARSER
+//Middileware is the function that invoke by express routing layer becasue we are using express using app
+const customMiddleware = (req, res,next)=>{
+    console.log("Middle ware executed!!!")
+    next() 
+}
+app.use(customMiddleware)
 //USING GET METHOD INSTEAD OF POST
 app.get("/",(req,res)=>{
+    console.log("hellow from localhost")
+    res.send("HELLO I AM RESPONSE FROM SERVER") //it will show on browser
+})
+app.get("/home",(req,res)=>{
+    console.log("hello from home page")
     res.send("HELLO I AM RESPONSE FROM SERVER") //it will show on browser
 })
 app.listen(PORT,()=>{ //which port number should response go and what task should it perform after listening on the port
