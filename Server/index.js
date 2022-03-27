@@ -4,8 +4,19 @@ import mongoose from "mongoose";
 import cors from "cors";
 
 
-const app = express();
+const app = express(); //THE WHOLE SERVER
 const PORT = 5000; //the port 5000 will work for database
+
+// MIDDLEWARE
+//USING GET METHOD INSTEAD OF POST
+app.get("/",(req,res)=>{
+    res.send("HELLO I AM RESPONSE FROM SERVER") //it will show on browser
+})
+app.listen(PORT,()=>{ //which port number should response go and what task should it perform after listening on the port
+    console.log("server is running on:",PORT)//it will show on terminal
+})  
+
+
 
 app.use(bodyParser.json({ limit: "30mb", extended: true }))  //setting the limit for body of html by encoding like images should not be greater then 30mb 
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true })) //for encoding the url  
@@ -16,3 +27,7 @@ const CONNECTION_URL = "mongodb+srv://socialnetwork:<password>@cluster0.czsk3.mo
 mongoose.connect(CONNECTION_URL).then(() => {  //connecting to mongodatabase
     console.log(`server Running on ${PORT}`)
 })
+
+
+//Get Method: data goes to the url and it will show on url like https://www.google.com/data= ashok   get is faster than post
+//Post Method: post will not show the data on the url like https://www.google.com post is slower than get
