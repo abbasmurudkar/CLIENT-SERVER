@@ -3,7 +3,6 @@ import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import cors from "cors";
 
-
 const app = express(); //THE WHOLE SERVER
 const PORT = 5000; //the port 5000 will work for database
 // MIDDLEWARE CORS BODY PARSER
